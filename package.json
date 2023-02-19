@@ -7,16 +7,14 @@
     "vscode": "^1.75.0"
   },
   "categories": [
-    "Other"
-  ],
-  "activationEvents": [
-    "onCommand:instantgdb.helloWorld"
+    "Debuggers"
   ],
   "main": "./extension.js",
   "contributes": {
     "commands": [{
-      "command": "instantgdb.helloWorld",
-      "title": "Hello World"
+      "command": "instantgdb.startGDB",
+      "title": "Run executable with GDB",
+      "category": "InstantGDB"
     }]
   },
   "scripts": {
