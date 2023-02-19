@@ -32,5 +32,8 @@
     "mocha": "^10.1.0",
     "typescript": "^4.9.4",
     "@vscode/test-electron": "^2.2.2"
-  }
+  },
+  "extensionDependencies": [
+    "ms-vscode.cpptools"
+  ]
 }
