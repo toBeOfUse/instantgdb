@@ -1,65 +1,28 @@
-# instantgdb README
+# InstantGDB
 
-This is the README for your extension "instantgdb". After writing up a brief description, we recommend including the following sections.
+Typically, in VSCode, debugging a C++ executable requires you to create a launch.json file where you specify your debug configuration. So you can avoid doing that, this extension will automatically generate a debug configuration based on the command that you would use to run your executable on the command line, and invoke the debugger GDB using it.
 
-## Features
+## Usage
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+0. Make sure you have GDB installed; it comes with the compiler g++ on most systems.
 
-For example if there is an image subfolder under your extension project workspace:
+1. Create your executable using a compiler like Clang or g++. Make sure to use the `-g` flag.
 
-\!\[feature X\]\(images/feature-x.png\)
+```bash
+g++ -g myclass.cpp mymain.cpp -o myprogram
+```
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+Or:
 
-## Requirements
+```bash
+# make sure -g is in your CPPFLAGS or similar in the makefile
+make debug
+```
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+2. Add breakpoints to your source code by clicking on the space to the left of the line numbers.
 
-## Extension Settings
+3. Hit F1 or Ctrl-Shift-P to bring up the VSCode command palette; type InstantGDB and choose the option to "Run executable with GDB"
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+4. Enter the command that you would use to run your executable normally, such as `./myprogram myinputfile.txt logdest.txt`
 
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+That should do it.
