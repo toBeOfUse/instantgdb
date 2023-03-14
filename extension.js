@@ -40,7 +40,7 @@ function activate(context) {
 	let disposable = vscode.commands.registerCommand('instantgdb.startGDB', async function () {
 		// The code you place here will be executed every time your command is executed
 		if (!(vscode.workspace.workspaceFolders && vscode.workspace.workspaceFolders.length > 0)){
-			vscode.window.showErrorMessage("please open go to the file menu and open the folder your executable is in");
+			vscode.window.showErrorMessage("please go to the file menu and open the folder your executable is in");
 			return;
 		}
 
@@ -51,6 +51,9 @@ function activate(context) {
 			placeHolder: "./a.out [arg1 arg2 arg3...]",
 			prompt: "Executable to debug"
 		  });
+		  if (!gdbCommand) {
+			return;
+		  }
 		  const cmds = parseArgs(gdbCommand);		  
 		  const exe = path.resolve(workspaceFolder, cmds[0]);
 		  const args = cmds.slice(1);
